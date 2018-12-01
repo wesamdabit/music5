@@ -20,7 +20,7 @@ const gif = require("gif-search");
 
 const client = new Discord.Client({disableEveryone: true});
 
-const prefix = "2";
+const prefix = "5";
 /////////////////////////
 ////////////////////////
 
@@ -349,8 +349,26 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : EX Clan ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`1play | Last Music`,"http://twitch.tv/Death Shop")
+client.user.setGame(`5play | D3S Music`,"https://www.twitch.tv/wesamdabit")
 client.user.setStatus("dnd")
 });
+
+
+
+client.on('message', msg => {
+
+    if (msg.content == '5join') {
+        if (msg.member.voiceChannel) {
+
+     if (msg.member.voiceChannel.joinable) {
+         msg.member.voiceChannel.join().then(msg.react('white_check_mark'));
+     }
+    }
+}
+})
+client.on('ready', () => { //code bot not leave room voice //Bot Is Online
+    client.channels.get("507220400292233216").join(); //by : D3S Community
+    });
+
 
 client.login(process.env.BOT_TOKEN);
